@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>N-Queens Solver</title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+   
+    <header class="site-header">
+        <div class="header-badge">DAA Project</div>
+        <h1 class="site-title">N&#x2013;Queens<br><span>Solver</span></h1>
+        <p class="site-sub">Backtracking Algorithm &middot; Visualised</p>
+    </header>
+
+    
+    <main class="container">
+
+        <section class="card input-card">
+            <h2 class="card-title">Configure</h2>
+
+            <div class="input-row">
+                <label for="nInput" class="input-label">Value of N</label>
+                <div class="input-wrap">
+                    <input
+                        type="number"
+                        id="nInput"
+                        min="1"
+                        max="15"
+                        value="6"
+                        class="n-input"
+                        placeholder="1 – 15"
+                    />
+                    <span class="input-hint">Enter 1 – 15</span>
+                </div>
+            </div>
+
+            <button id="solveBtn" class="solve-btn">
+                <span class="btn-icon">♛</span>
+                <span class="btn-text">Solve N-Queens</span>
+            </button>
+
+           
+            <div id="errorBox" class="error-box hidden"></div>
+        </section>
+
+       
+        <section class="card stats-card hidden" id="statsCard">
+            <div class="stat-item">
+                <span class="stat-value" id="statN">–</span>
+                <span class="stat-label">Board Size</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-value" id="statCount">–</span>
+                <span class="stat-label">Solutions Found</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <span class="stat-value" id="statTime">–</span>
+                <span class="stat-label">Time (ms)</span>
+            </div>
+        </section>
+
+  
+        <section class="card complexity-card">
+            <h2 class="card-title">Time Complexity</h2>
+            <div class="complexity-grid">
+                <div class="complexity-item">
+                    <span class="c-label">Worst Case</span>
+                    <code class="c-value">O(N!)</code>
+                </div>
+                <div class="complexity-item">
+                    <span class="c-label">Space</span>
+                    <code class="c-value">O(N²)</code>
+                </div>
+                <div class="complexity-item">
+                    <span class="c-label">Algorithm</span>
+                    <code class="c-value">Backtracking</code>
+                </div>
+            </div>
+            <p class="complexity-note">
+                Backtracking prunes invalid branches early, making it much faster
+                than brute force <code>O(N<sup>N</sup>)</code> in practice.
+                For each column we try at most N rows, and recurse into N columns,
+                giving an upper bound of N! placements.
+            </p>
+        </section>
+
+        
+        <section class="card board-card hidden" id="boardCard">
+            <div class="board-header">
+                <h2 class="card-title">Chessboard View</h2>
+                <div class="nav-controls">
+                    <button class="nav-btn" id="prevBtn" onclick="changeSolution(-1)">&#8592; Prev</button>
+                    <span class="sol-counter" id="solCounter">1 / 1</span>
+                    <button class="nav-btn" id="nextBtn" onclick="changeSolution(1)">Next &#8594;</button>
+                </div>
+            </div>
+
+           
+            <div id="chessboard" class="chessboard"></div>
+
+           
+            <div class="board-legend" id="boardLegend"></div>
+        </section>
+
+     
+        <section class="card solutions-card hidden" id="solutionsCard">
+            <h2 class="card-title">All Solutions</h2>
+            <p class="solutions-hint">Each row shows queen positions (column → row index, 0-based).</p>
+            <div id="solutionsList" class="solutions-list"></div>
+        </section>
+
+    </main>
+
+    
+    <footer class="site-footer">
+        <p>Design &amp; Analysis of Algorithms &middot; N-Queens Problem</p>
+        <p class="footer-algo">Algorithm: Backtracking &nbsp;|&nbsp; Language: C++ &nbsp;|&nbsp; Server: Node.js + Express</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
